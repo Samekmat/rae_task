@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'business_card.apps.BusinessCardConfig',
+    'vcard.apps.BusinessCardConfig',
     'users',
 
     "crispy_forms",
