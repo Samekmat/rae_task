@@ -13,6 +13,7 @@ django-environ = "^0.11.2"
 pre-commit = "^3.7.0"
 black = "^24.4.2"
 ruff = "^0.4.2"
+crispy-bootstrap5 = "^2024.2"
 
 
 [build-system]
