@@ -10,5 +10,5 @@ class VCard(models.Model):
     image = models.ImageField(upload_to='images/')
     unique_url = models.CharField(max_length=100, unique=True)
     unique_qr_code = models.ImageField(upload_to='qr_codes/', unique=True)
-    unique_vcard_file = models.FileField(upload_to='vcard_files/', unique=True)
+    vcard_file = models.FileField(upload_to='vcard_files/')
 
