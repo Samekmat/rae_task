@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "rae-task"
+version = "0.1.0"
+description = ""
+authors = ["Mateusz Samek <samekmat@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0.4"
+mysqlclient = "^2.2.4"
+django-environ = "^0.11.2"
+pre-commit = "^3.7.0"
+black = "^24.4.2"
+ruff = "^0.4.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
