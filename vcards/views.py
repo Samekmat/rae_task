@@ -49,7 +49,9 @@ class VCardCreateView(LoginRequiredMixin, CreateView):
 
         vcard_string = self.generate_vcard(vcard_data)
 
-        vcard_instance.vcard_file.save(f'contact_{vcard_data['name']}_{vcard_data['surname']}_{vcard_data['company_name']}.vcf', ContentFile(vcard_string))
+        vcard_instance.vcard_file.save(
+            f'contact_{vcard_data['name']}_{vcard_data['surname']}_{vcard_data['company_name']}.vcf',
+            ContentFile(vcard_string))
 
         qr_data = self.request.build_absolute_uri(vcard_instance.unique_url)
         qr_code_data = self.generate_qr_code(qr_data)
