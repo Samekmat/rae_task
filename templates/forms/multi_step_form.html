@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+<form action="" method="post">{% csrf_token %}
+{{ wizard.management_form }}
+{% if wizard.steps.current == '0' %}
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="bg-light p-4 rounded">
+        <p>Cześć, tu rafał Kaczmarczyk z RAE.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    <p>Proszę, zostaw mi numer kontaktowy, a ja wyślę Ci moją wizytówkę.</p>
+    <img class="mb-5" width="200px" height="200px" src="{{ vcard.image.url }}"/>
+    
+{% elif wizard.steps.current == '1' %}
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="bg-light p-4 rounded">
+        <p>Dziękuje!</p>
+      </div>
+    </div>
+  </div>
+</div>
+    <p>Za chwilę dostaniesz ode mnie SMS.</p>
+    <p>Możesz podać jak mam Cię zapisać?</p>
+{% elif wizard.steps.current == '2' %}
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="bg-light p-4 rounded">
+        <p>Aaa... I jeszcze jedno</p>
+      </div>
+    </div>
+  </div>
+</div>
+    <p>Jeśli chciałbyś żebym zadzwonił konkretnego dnia, godzinie lub w temacie to napisz. Dzięki!</p>
+{% elif wizard.steps.current == '3' %}
+    <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="bg-light p-4 rounded">
+        <p>W kontakcie!</p>
+      </div>
+    </div>
+  </div>
+</div>
+    <p>Dzieki za przekazanie kontaktu, mój otrzymasz do 5 minut. Do usłyszenia!</p>
+{% endif %}
+
+{% if wizard.form.forms %}
+    {{ wizard.form.management_form }}
+    {% for form in wizard.form.forms %}
+        {{ form|crispy }}
+    {% endfor %}
+{% else %}
+    {{ wizard.form|crispy }}
+{% endif %}
+<input type="submit" class="btn btn-info mt-3 mb-3" value="Dalej"/>
+{% if wizard.steps.current == '0' %}
+    <p>Lub jeśli nie chcesz to:</p>
+{% endif %}
+</form>
+    
+    {% if wizard.steps.current == '0' %}
+        {% if vcard.unique_url %}
+            <a href="{% url 'vcards:download_vcard' unique_url=vcard.unique_url %}" class="btn btn-primary mt-3">Wyślij wizytówkę</a>
+        {% endif %}
+    {% elif wizard.steps.current == '1' %}
+        Ps. Przejdź dalej to zoabczysz mema!
+    {% elif wizard.steps.current == '2' %}
+        Teraz już na pewno będzie mem :I!
+    {% elif wizard.steps.current == '3' %}
+        <img alt="Tu powinien być losowy mem">
+        <p>Tak to ten mem! Jest ok?</p>
+        <button type="submit"  name="submit_nie_ok" class="btn btn-primary">NIE OK</button>
+        <button type="submit" name="submit_ok" class="btn btn-secondary">OK</button>
+    {% endif %}
+    
+{% endblock %}
