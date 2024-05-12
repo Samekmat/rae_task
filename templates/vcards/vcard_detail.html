@@ -7,24 +7,24 @@
     <script>
 document.getElementById('copyLink').addEventListener('click', function(event) {
     event.preventDefault();
-    
+
     let tempInput = document.createElement('input');
-    
+
     tempInput.value = "{{ vcard.unique_url }}";
-    
+
     document.body.appendChild(tempInput);
-    
+
     tempInput.select();
-    
+
     document.execCommand('copy');
-    
+
     document.body.removeChild(tempInput);
-    
+
     alert('Link copied to clipboard!');
 });
 </script>
 
-    
+
     <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -36,16 +36,16 @@ document.getElementById('copyLink').addEventListener('click', function(event) {
 </div>
     <div class="conainer">
     Kod QR - <a href="{{ vcard.qr_code.url }}">pobierz</a>
-    
+
     </div>
     <img src="{{ vcard.qr_code.url }}" alt="QR Code">
-    
+
     <div class="conainer">
     Adres URL - <a href="{% url 'vcards:multi_step_form' vcard.unique_url %}">Kopiuj</a>
-        
+
         <div class="alert alert-secondary" role="alert">
         <p>https://card.ceremeo.pl/{{ vcard.unique_url }}</p>
         </div>
     </div>
-    
+
 {% endblock %}

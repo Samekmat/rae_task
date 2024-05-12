@@ -17,7 +17,7 @@
 </div>
     <p>Proszę, zostaw mi numer kontaktowy, a ja wyślę Ci moją wizytówkę.</p>
     <img class="mb-5" width="200px" height="200px" src="{{ vcard.image.url }}"/>
-    
+
 {% elif wizard.steps.current == '1' %}
     <div class="container">
   <div class="row justify-content-center">
@@ -67,7 +67,7 @@
     <p>Lub jeśli nie chcesz to:</p>
 {% endif %}
 </form>
-    
+
     {% if wizard.steps.current == '0' %}
         {% if vcard.unique_url %}
             <a href="{% url 'vcards:download_vcard' unique_url=vcard.unique_url %}" class="btn btn-primary mt-3">Wyślij wizytówkę</a>
@@ -82,5 +82,5 @@
         <button type="submit"  name="submit_nie_ok" class="btn btn-primary">NIE OK</button>
         <button type="submit" name="submit_ok" class="btn btn-secondary">OK</button>
     {% endif %}
-    
+
 {% endblock %}

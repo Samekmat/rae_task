@@ -1,19 +1,18 @@
+from io import BytesIO
 from typing import Dict
 
+import qrcode
 import vobject
-import requests
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.files import File
 from django.core.files.base import ContentFile
 from django.http import FileResponse, HttpResponse
-from django.views.generic import CreateView, DetailView, View
 from django.urls import reverse_lazy
+from django.views.generic import CreateView, DetailView, View
 from formtools.wizard.views import SessionWizardView
 
+from .forms import StepFourForm, StepOneForm, StepThreeForm, StepTwoForm, VCardForm
 from .models import VCard
-from .forms import VCardForm, StepOneForm, StepTwoForm, StepThreeForm, StepFourForm
-import qrcode
-from io import BytesIO
-from django.core.files import File
 
 
 class VCardCreateView(LoginRequiredMixin, CreateView):

@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("vcards", "0003_remove_vcard_unique_qr_code_vcard_qr_code"),
     ]

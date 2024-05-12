@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("vcards", "0002_remove_vcard_unique_vcard_file"),
     ]
